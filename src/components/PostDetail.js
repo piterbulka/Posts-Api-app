@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import axios from 'axios';
+import './PostDetail.css'
 
 const fetchPostById = async (postId) => {
   const response = await axios.get(
@@ -18,7 +19,7 @@ const PostDetail = () => {
   );
 
   const handleBackClick = () => {
-    // В React Router DOM 6 используйте `useNavigate` для навигации назад
+    
     window.history.back();
   };
 
@@ -31,7 +32,7 @@ const PostDetail = () => {
   }
 
   return (
-    <div>
+    <div className="container">
       <h2>{data.title}</h2>
       <p>{data.body}</p>
       <button onClick={handleBackClick}>Назад</button>

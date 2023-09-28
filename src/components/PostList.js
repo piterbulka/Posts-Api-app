@@ -3,6 +3,7 @@ import { useInfiniteQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import PostListItem from './PostListItem';
 import axios from 'axios';
+import './PostList.css'
 
 const PostsList = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const PostsList = () => {
     isError,
     error,
   } = useInfiniteQuery('posts', fetchPosts, {
-    getNextPageParam: (lastPage, pages) => {
+    getNextPageParam: (pages) => {
       const nextPage = pages.length + 1;
       return nextPage;
     },
@@ -43,11 +44,11 @@ const PostsList = () => {
   };
 
   return (
-    <div>
+    <div className='list'>
       {data.pages.map((page, pageIndex) => (
         <React.Fragment key={pageIndex}>
           {page.map((post) => (
-            <PostListItem
+            <PostListItem className="post-item"
               key={post.id}
               post={post}
               onClick={() => handlePostClick(post.id)}
@@ -56,7 +57,7 @@ const PostsList = () => {
         </React.Fragment>
       ))}
       {hasNextPage && (
-        <button
+        <button 
           onClick={() => fetchNextPage()}
           disabled={isFetchingNextPage}
         >

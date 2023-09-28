@@ -1,0 +1,13 @@
+.list {
+    max-width: 600px; 
+    margin: 0 auto; 
+    padding: 20px; 
+}
+
+.post-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
